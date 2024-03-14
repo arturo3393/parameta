@@ -12,11 +12,21 @@ import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
-
+/**
+ * Configuration class for managing the SOAP server using a WsConfigurerAdapter.
+ * This class handles the necessary configuration for the SOAP server.
+ */
 @EnableWs
 @Configuration
 public class WebServiceConfig extends WsConfigurerAdapter {
 
+    /**
+     * Handles the configuration of the message dispatcher.
+     *
+     * @param applicationContext the application context to handle the dispatcher
+     * @return the servlet registration bean
+     * @throws IllegalArgumentException when parameters are not valid
+     */
     @Bean
     public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext applicationContext) {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
@@ -25,6 +35,13 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         return new ServletRegistrationBean<>(servlet, "/ws/*");
     }
 
+    /**
+     * Defines the default WSDL definition for the "employeeSoap" web service.
+     *
+     * @param employeeSchema the XSD schema of the employee service
+     * @return the WSDL definition of the "employeeSoap" service
+     * @throws IllegalArgumentException when parameters are not valid
+     */
     @Bean(name = "employeeSoap")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema employeeSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
@@ -35,6 +52,13 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         return wsdl11Definition;
     }
 
+
+    /**
+     * Creates the XSD schema for the employee service.
+     *
+     * @return the XSD schema of the employee service
+     * @throws IllegalArgumentException when parameters are not valid
+     */
     @Bean
     public XsdSchema employeeSchema() {
         return new SimpleXsdSchema(new ClassPathResource("employeeSoap.xsd"));

@@ -1,5 +1,8 @@
 package com.parameta.challenge.controller;
 
+import static com.parameta.challenge.utils.Constants.ADULT_AGE;
+import static com.parameta.challenge.utils.EmployeeUtils.*;
+
 import com.parameta.challenge.domain.Employee;
 import com.parameta.challenge.domain.ResponseDTO;
 import com.parameta.challenge.service.EmployeeService;
@@ -11,20 +14,33 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-import static com.parameta.challenge.utils.Constants.ADULT_AGE;
-import static com.parameta.challenge.utils.EmployeeUtils.*;
-
+/**
+ * Controller class for managing employee-related operations.
+ * This class handles requests related to employee management, such as fetching employee details and saving new employees.
+ */
 @RestController
 @RequestMapping("/api/v1")
 public class EmployeeController {
 
+    /**
+     * Call to the interface for managing employee-related operations.
+     */
     @Autowired
     private EmployeeService employeeService;
 
+    /**
+     * Endpoint class for handling SOAP requests.
+     */
     @Autowired
-    EmployeeEndpoint employeeEndpoint;
+    private EmployeeEndpoint employeeEndpoint;
 
-
+    /**
+     * Retrieves the employee from a restful get method and if it has the correct values
+     * it is saved through SOAP in MySQL database.
+     *
+     * @param employeeInput the input employee object containing the employee information
+     * @return a ResponseEntity containing the response data, including employee details
+     */
     @GetMapping("/employee/")
     public ResponseEntity<ResponseDTO<Optional<Employee>>> getEmployeeById(@RequestBody(required = true) Employee employeeInput) {
         ResponseDTO<Optional<Employee>> response = new ResponseDTO<>();

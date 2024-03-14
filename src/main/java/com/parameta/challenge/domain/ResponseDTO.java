@@ -2,6 +2,9 @@ package com.parameta.challenge.domain;
 
 import lombok.Data;
 
+/**
+ * Entity class representing the API costume responses
+ */
 @Data
 public class ResponseDTO<T> {
     private boolean answer;

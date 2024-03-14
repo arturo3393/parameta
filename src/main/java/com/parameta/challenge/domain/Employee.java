@@ -2,9 +2,13 @@ package com.parameta.challenge.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.time.LocalDate;
-import java.util.Date;
+
+
+/**
+ * Entity class representing an employee.
+ * This class defines the structure of an employee entity, including attributes such as ID, name, date of birth, etc.
+ */
 
 @Data
 @Table
