@@ -22,8 +22,8 @@ public class EmployeeUtils {
 
 
     public static boolean areNullValues(final Employee employee) {
-        return Stream.of(employee.id(), employee.name(), employee.jobTitle(),
-                        employee.salary(), employee.hiringDate())
+        return Stream.of(employee.getId(), employee.getName(), employee.getJobTitle(),
+                        employee.getSalary(), employee.getHiringDate())
                 .anyMatch(Objects::isNull);
     }
 

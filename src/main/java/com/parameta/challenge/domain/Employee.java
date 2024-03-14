@@ -1,22 +1,23 @@
 package com.parameta.challenge.domain;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.Date;
 
-@Entity
+@Data
 @Table
-public record Employee(
-        @Id
-        @Column(nullable = false)
-        String id,
-        String name,
-        String lastName,
-        LocalDate dateOfBirth,
-        LocalDate hiringDate,
-        String jobTitle,
-        Double salary
-) {
+@Entity
+public class Employee {
+    @Id
+    @Column(nullable = false)
+    private String id;
+    private String name;
+    private String lastName;
+    private LocalDate dateOfBirth;
+    private LocalDate hiringDate;
+    private String jobTitle;
+    private Double salary;
 }
 
