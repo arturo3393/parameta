@@ -42,8 +42,6 @@ public class EmployeeController {
                 response.setMsg("Employee must be older than " + ADULT_AGE);
 
             } else {
-
-                // TODO: Invoke soap method
                 employeeEndpoint.saveEmployee(employeeInput);
 
                 response.setData(Optional.of(employeeInput));
