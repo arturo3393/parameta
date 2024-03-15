@@ -38,27 +38,27 @@ public class EmployeeController {
     /**
      * Retrieves employee details based on provided parameters.
      *
-     * @param id           The unique identifier of the employee. (Required)
-     * @param name         The first name of the employee. (Required)
-     * @param lastName     The last name of the employee. (Required)
-     * @param dateOfBirth  The date of birth of the employee in yyyy-MM-dd format. (Required)
-     * @param hiringDate   The hiring date of the employee in yyyy-MM-dd format. (Required)
-     * @param jobTitle     The job title of the employee. (Required)
-     * @param salary       The salary of the employee. (Required)
-     * @return             ResponseEntity containing ResponseDTO with employee details.
-     *                     If successful, ResponseDTO will contain employee details along with a success message.
-     *                     If unsuccessful, ResponseDTO will contain an error message.
+     * @param id          The unique identifier of the employee. (Required)
+     * @param name        The first name of the employee. (Required)
+     * @param lastName    The last name of the employee. (Required)
+     * @param dateOfBirth The date of birth of the employee in yyyy-MM-dd format. (Required)
+     * @param hiringDate  The hiring date of the employee in yyyy-MM-dd format. (Required)
+     * @param jobTitle    The job title of the employee. (Required)
+     * @param salary      The salary of the employee. (Required)
+     * @return ResponseEntity containing ResponseDTO with employee details.
+     * If successful, ResponseDTO will contain employee details along with a success message.
+     * If unsuccessful, ResponseDTO will contain an error message.
      */
     @GetMapping("/employee/")
     public ResponseEntity<ResponseDTO<Optional<Employee>>> getEmployee(@RequestParam(required = true) String id,
-                                                                         @RequestParam(required = true) String name,
-                                                                         @RequestParam(required = true) String lastName,
-                                                                         @RequestParam(required = true) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfBirth,
-                                                                         @RequestParam(required = true) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate hiringDate,
-                                                                         @RequestParam(required = true) String jobTitle,
-                                                                         @RequestParam(required = true) Double salary) {
+                                                                       @RequestParam(required = true) String name,
+                                                                       @RequestParam(required = true) String lastName,
+                                                                       @RequestParam(required = true) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfBirth,
+                                                                       @RequestParam(required = true) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate hiringDate,
+                                                                       @RequestParam(required = true) String jobTitle,
+                                                                       @RequestParam(required = true) Double salary) {
         ResponseDTO<Optional<Employee>> response = new ResponseDTO<>();
-        Employee employeeInput = new Employee(id,name,lastName,dateOfBirth,hiringDate,jobTitle,salary);
+        Employee employeeInput = new Employee(id, name, lastName, dateOfBirth, hiringDate, jobTitle, salary);
         try {
             if (areNullValues(employeeInput)) {
                 response.setAnswer(false);
