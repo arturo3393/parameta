@@ -42,7 +42,8 @@ class EmployeeControllerTest {
         expectedResponse.setMsg("Null values are not allowed for an employee");
         expectedResponse.setData(Optional.of(employee));
 
-        assertEquals(new ResponseEntity<>(expectedResponse, HttpStatus.OK), employeeController.getEmployee(employee));
+        assertEquals(new ResponseEntity<>(expectedResponse, HttpStatus.OK), employeeController.getEmployee("1", null, null,
+                null, null, "developer", 2D));
 
     }
 
@@ -57,7 +58,8 @@ class EmployeeControllerTest {
         expectedResponse.setAnswer(false);
         expectedResponse.setMsg("Employee must be older than 18");
 
-        assertEquals(new ResponseEntity<>(expectedResponse, HttpStatus.OK), employeeController.getEmployee(employee));
+        assertEquals(new ResponseEntity<>(expectedResponse, HttpStatus.OK), employeeController.getEmployee("1", "Pablo", "Beltran",
+                LocalDate.parse("2020-03-14"), LocalDate.now(), "developer", 2D));
 
     }
 
