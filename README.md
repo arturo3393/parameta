@@ -37,10 +37,10 @@ Employee entity
 
 ## Features
 
-- Costum API responses
-- Costum exception handler
+- Costume API responses
+- Costume exception handler
 - Unit testing
-- SQL Script with MySQL data base creation and its table
+- SQL Script with MySQL database creation and its table
 
 
 
