@@ -42,7 +42,7 @@ public class EmployeeController {
      * @return a ResponseEntity containing the response data, including employee details
      */
     @GetMapping("/employee/")
-    public ResponseEntity<ResponseDTO<Optional<Employee>>> getEmployeeById(@RequestBody(required = true) Employee employeeInput) {
+    public ResponseEntity<ResponseDTO<Optional<Employee>>> getEmployee(@RequestBody(required = true) Employee employeeInput) {
         ResponseDTO<Optional<Employee>> response = new ResponseDTO<>();
         try {
             if (areNullValues(employeeInput)) {

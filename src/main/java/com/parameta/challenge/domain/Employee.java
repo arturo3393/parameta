@@ -1,7 +1,9 @@
 package com.parameta.challenge.domain;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+
 import java.time.LocalDate;
 
 
@@ -12,6 +14,7 @@ import java.time.LocalDate;
 
 @Data
 @Table
+@AllArgsConstructor
 @Entity
 public class Employee {
     @Id
