@@ -21,7 +21,12 @@ configurations {
 
 bootJar {
     archiveBaseName = 'gs-producing-web-service'
-    archiveVersion =  '0.1.0'
+    archiveVersion = '0.1.0'
+}
+
+javadoc {
+    source = sourceSets.main.allJava
+    destinationDir = file("$buildDir/docs/javadoc")
 }
 
 repositories {

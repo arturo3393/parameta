@@ -6,8 +6,6 @@ import com.parameta.challenge.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 /**
  * Implementation of the EmployeeService interface.
  * This class provides methods to interact with the Employee entity.
