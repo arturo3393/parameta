@@ -23,10 +23,10 @@ public class EmployeeUtils {
      * @param employee The Employee object to check.
      * @return true if any field is null, false otherwise.
      */
-    public static boolean areNullValues(final Employee employee) {
+    public static boolean areNullOrEmptyValues(final Employee employee) {
         return Stream.of(employee.getId(), employee.getName(), employee.getJobTitle(),
                         employee.getSalary(), employee.getHiringDate())
-                .anyMatch(Objects::isNull);
+                .anyMatch(value -> value == null|| (value instanceof String && ((String) value).isEmpty()));
     }
 
     /**

@@ -51,8 +51,8 @@ public class EmployeeController {
      */
     @GetMapping("/employee/")
     public ResponseEntity<ResponseDTO<Optional<Employee>>> getEmployee(@RequestParam(required = true) String id,
-                                                                       @RequestParam(required = true) String name,
-                                                                       @RequestParam(required = true) String lastName,
+                                                                       @RequestParam() String name,
+                                                                       @RequestParam() String lastName,
                                                                        @RequestParam(required = true) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfBirth,
                                                                        @RequestParam(required = true) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate hiringDate,
                                                                        @RequestParam(required = true) String jobTitle,
@@ -60,9 +60,9 @@ public class EmployeeController {
         ResponseDTO<Optional<Employee>> response = new ResponseDTO<>();
         Employee employeeInput = new Employee(id, name, lastName, dateOfBirth, hiringDate, jobTitle, salary);
         try {
-            if (areNullValues(employeeInput)) {
+            if (areNullOrEmptyValues(employeeInput)) {
                 response.setAnswer(false);
-                response.setMsg("Null values are not allowed for an employee");
+                response.setMsg("Null or empty values are not allowed for an employee");
                 response.setData(Optional.of(employeeInput));
             } else if (!isAValidDate(employeeInput.getDateOfBirth()) ||
                     !isAValidDate(employeeInput.getHiringDate())) {
